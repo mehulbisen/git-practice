@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: mehulbisen/mehul-repo:m2
+          image: mehulbisen/mehul-repo:m5
           ports:
             - containerPort: 80
   replicas: 3
