@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-backend
+  labels:
+    app: backend
+spec:
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend-app
+          image: mehulbisen/mehul-repo:m1
+          ports: 
+            - containerPort: 8080
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend
+  strategy: 
+    type: RollingUpdate
+  
