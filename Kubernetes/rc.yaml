@@ -5,6 +5,7 @@ metadata:
   name: my-rc
   labels: 
     env: dev
+  namespace: default
 spec:
   template:
     metadata:
@@ -28,6 +29,7 @@ metdata:
   name: my-svc
   labels: 
     env: dev
+  namespace: default
 spec:
   ports:
     - name: my-port
