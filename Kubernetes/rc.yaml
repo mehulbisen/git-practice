@@ -11,7 +11,7 @@ spec:
       labels:
         env: dev
     spec:
-      container:
+      containers:
         - name: my-container
           image: httpd
           port: 
