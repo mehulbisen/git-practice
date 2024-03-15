@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  labels: 
+    env: dev
+spec: 
+  template:
+    metadata:
+      labels:
+        env: dev
+    spec:
+      containers:
+        - name: my-container
+          image: httpd
+          ports:
+            - containerPort: 80
+  replicas: 3
+  selector:
+    matchlabels:
+      env: dev
+  strategy:
+    type: RollingUpdate
