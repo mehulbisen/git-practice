@@ -33,7 +33,7 @@ spec:
     - name: my-port
       port: 80
       targetPort: 80
-      protocol: tcp
+      protocol: TCP
   type: NodePort
   selector:
     env: dev
