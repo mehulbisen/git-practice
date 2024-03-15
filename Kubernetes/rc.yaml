@@ -1,0 +1,40 @@
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: my-rc
+  labels: 
+    env: dev
+spec:
+  template:
+    metadata:
+      labels:
+        env: dev
+    spec:
+      container:
+        - name: my-container
+          image: httpd
+          port: 
+            containerPort: 80
+  replicas: 3
+  selector:
+    env: dev
+...
+
+---
+apiVersion: v1
+kind: Service
+metdata:
+  name: my-svc
+  labels: 
+    env: dev
+spec:
+  ports:
+    - name: my-port
+      port: 80
+      targetPort: 80
+      protocol: tcp
+  type: NodePort
+  selector:
+    env: dev
+...
