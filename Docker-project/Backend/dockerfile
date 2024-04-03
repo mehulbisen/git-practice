@@ -1,12 +1,15 @@
 FROM centos:7
-RUN yum install java-11-openjdk -y
+RUN yum install java-1.8.0-amazon-corretto -y
 ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.87/bin/apache-tomcat-9.0.87.tar.gz /
-RUN tar -xzf apache-tomcat-8.5.98.tar.gz -C /opt/ && \
-    rm -rf ./apache-tomcat-8.5.98.tar.gz
-WORKDIR /opt/apache-tomcat-8.5.98
-COPY context.xml conf/context.xml
-ADD https://s3-us-west-2.amazonaws.com/studentapi-cit/student.war /opt/apache-tomcat-8.5.98
-ADD https://s3-us-west-2.amazonaws.com/studentapi-cit/mysql-connector.jar lib/mysql-connector.jar
-COPY /opt/apache-tomcat-8.5.98/student.war webapps/student.war
+RUN tar -xzf apache-tomcat-9.0.87.tar.gz /opt
+ADD https://s3-us-west-2.amazonaws.com/studentapi-cit/student.war /opt/apache-tomcat-9.0.87/webapps/
+ADD https://s3-us-west-2.amazonaws.com/studentapi-cit/mysql-connector.jar /opt/apache-tomcat-9.0.87/lib/mysql-connector.jar
+WORKDIR /opt/apache-tomcat-9.0.87/conf/
+RUN echo"<Resource name="jdbc/TestDB" auth="Container" type="javax.sql.DataSource"
+           maxTotal="500" maxIdle="30" maxWaitMillis="1000"
+           username="admin" password="redhat12345" driverClassName="com.mysql.jdbc.Driver"
+           url="jdbc:mysql://database-1.cpem244aiq7d.eu-west-1.rds.amazonaws.com:3306/project?useUnicode=yes&amp;characterEncoding=utf8"/>" > contex.xml   
 EXPOSE 8080
 CMD ["./bin/catalina.sh", "run"]
+
+
