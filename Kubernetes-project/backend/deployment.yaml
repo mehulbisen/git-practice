@@ -1,0 +1,46 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+  labels:
+    app: three-tier
+spec:
+  template:
+    metadata:
+      labels:
+        app: three-tier
+    specs:
+      containers:
+        - name: backend-server
+          image: mehulbisen/mehul-repo:backend
+          ports:
+            containerPort: 8080
+  replicas: 3
+  selector:
+    matchLabels:
+      app: three-tier
+  strategy: RollingUpdate
+
+...
+
+---
+apiVersion: v1
+kind: service
+metadata: 
+  name: my-service
+  labels:
+    app: three-tier
+spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+      protocol: tcp
+  type: NodePort
+  selector:
+    app: three-tier
+
+...
+
+
+
