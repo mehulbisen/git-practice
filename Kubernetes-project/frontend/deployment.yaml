@@ -1,0 +1,44 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  labels:
+    app: three-tier
+spec: 
+  template: 
+    metadata:
+      labels:
+        app: three-tier
+    spec:
+      containers:
+        - name: frontend
+          image: mehulbisen/mehul-repo:frontendff
+          ports:
+            - containerPort: 80
+  replicas: 3
+  selector:
+    matchLabels:
+      app: three-tier
+  strategy:
+    type: RollingUpdate
+...
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  labels:
+    app: three-tier
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+  type: NodePort
+  selector:
+    app: three-tier
+
+...
+  
