@@ -10,7 +10,7 @@ spec:
     metadata:
       labels:
         app: three-tier
-    specs:
+    spec:
       containers:
         - name: backend-server
           image: mehulbisen/mehul-repo:backend
@@ -36,7 +36,7 @@ spec:
   ports:
     - port: 80
       targetPort: 8080
-      protocol: tcp
+      protocol: TCP
   type: NodePort
   selector:
     app: three-tier
