@@ -20,13 +20,14 @@ spec:
   selector:
     matchLabels:
       app: three-tier
-  strategy: RollingUpdate
+  strategy: 
+    type: RollingUpdate
 
 ...
 
 ---
 apiVersion: v1
-kind: service
+kind: Service
 metadata: 
   name: my-service
   labels:
