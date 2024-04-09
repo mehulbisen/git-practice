@@ -10,3 +10,4 @@ WORKDIR /opt/apache-tomcat-9.0.87/bin/
 CMD ["./catalina.sh", "run"]
 
 
+
