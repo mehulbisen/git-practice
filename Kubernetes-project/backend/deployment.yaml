@@ -15,7 +15,7 @@ spec:
         - name: backend-server
           image: mehulbisen/mehul-repo:backend
           ports:
-            containerPort: 8080
+            - containerPort: 8080
   replicas: 3
   selector:
     matchLabels:
