@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudCracker Coaching Classes</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            overflow-x: hidden;
+            margin-left: 10px;
+            margin-top: 150px;
+        }
+
+        .course-section {
+            padding: 50px 0;
+        }
+
+        .card {
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        h1 {
+            color: #446688;
+        }
+
+        p {
+            line-height: 1.5;
+        }
+
+        .course-key li::before,
+        .skills-list li::before {
+            content: url('http://52.209.254.209/images/right.jpg');
+            margin-right: 5px;
+            height: 24px;
+            width: 24px;
+            vertical-align: middle;
+        }
+
+        .course-key,
+        .skills-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .navbar {
+            padding: 0 0; /* Adjusted padding */
+        }
+
+        .navbar-brand {
+            padding: 0 5px;
+        }
+
+        .navbar-nav .nav-link {
+            padding: 0 10px; /* Adjusted padding */
+            margin-top: 0; /* Remove negative margin */
+        }
+
+        .navbar-toggler {
+            padding: 0 10px; /* Adjusted padding */
+        }
+
+        .navbar-collapse {
+            margin-top: 10px; /* Adjusted margin */
+        }
+
+        .navbar-nav {
+            margin-left: auto;
+        }
+
+        .navbar-nav .nav-item .nav-link {
+            color: #000;
+            margin-top: -15px;
+        }
+
+        .navbar-nav .nav-item .nav-link:hover {
+            color: #007bff;
+        }
+
+        .navbar-nav .nav-item:not(:last-child) {
+            margin-right: 20px;
+        }
+
+        .advisor-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 180px;
+        }
+
+        .advisor-button:hover {
+            background-color: #004e9a;
+        }
+
+        .modal-dialog {
+            max-width: 400px;
+        }
+
+        .lesson-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lesson-list a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .lesson-list li {
+            position: relative;
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        .lesson-list li::before {
+            content: '\2022';
+            position: absolute;
+            left: 0;
+            color: #007bff;
+        }
+
+        .lessons,
+        .sub-lessons {
+            display: none;
+            padding-left: 20px;
+        }
+
+        .grey-box {
+            background-color: #ebf1f8;
+            padding: 10px;
+            border-radius: 5px;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px;
+        }
+
+        .course-content-container {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .lessons-toggle::before {
+            content: '+ ';
+        }
+
+        .lessons-toggle.collapsed::before {
+            content: '- ';
+        }
+
+        .lesson {
+            margin-bottom: 7px;
+        }
+
+        .download-syllabus-button {
+            background-color: #fff;
+            color: #007bff;
+            padding: 10px 20px;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 200px;
+            margin-top: 20px;
+        }
+
+        .download-syllabus-button:hover {
+            background-color: #004e9a;
+            color: #fff;
+        }
+
+        .modal-content {
+            text-align: center;
+        }
+
+        .modal-body {
+            padding: 24px;
+            text-align: center;
+        }
+
+        /* Add this CSS to center the content horizontally */
+        .modal-body .text-center {
+            margin: 0 auto;
+            width: 130%; /* Adjust the width as needed */
+        }
+
+
+        .with-shadow {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .online-coaching-image {
+            width: 180%;
+            max-width: 600px;
+            margin-left: -330px;
+            margin-top: -30px;
+        }
+
+        .navbar-container {
+            background-color: #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 0 0;
+        }
+
+        .bg-black {
+            background-color: black !important;
+        }
+
+        .navbar-dark .navbar-nav .nav-link {
+            color: white;
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar-container">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#home">
+                    <img src="http://52.209.254.209/images/logo.jpg" alt="Company Logo" style="max-height: 80px;">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#home" data-toggle="tooltip" data-placement="bottom" title="Home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#syllabus" data-toggle="tooltip" data-placement="bottom" title="Syllabus">Syllabus</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about" data-toggle="tooltip" data-placement="bottom" title="About">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact-section" data-toggle="tooltip" data-placement="bottom" title="Contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="container mt-5">
+        <section id="home">
+        <div class="row">
+            <div class="col-md-6">
+                <div style="margin-top: 40px;">
+                    <h2>DevOps Training Course for <br> Freshers/Experience</h2>
+                    <p>By opting for this course, you will master AWS architectural principles and <br> services such as IAM, VPC, EC2, EBS etc. Along with this you will get a chance <br>to explore in DevOps tools as well such as Git, GitHub, Jenkins, Docker, Kubernetes, Terraform, Ansible.</p>
+                    <div class="advisor-section" style="margin-top: 20px;">
+                        <button class="advisor-button" data-toggle="modal" data-target="#advisorModal">Talk to our advisor</button>
+                        <button class="download-syllabus-button" onclick="openDownloadModal()">Download Syllabus</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 order-first order-md-last">
+                <div class="header-image" style="margin-top: -30px;">
+                    <img src="http://52.209.254.209/images/chip1.webp" alt="SampleImage" class="w-100">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="syllabus" class="section">
+        <div class="mt-5">
+            <h3>Skills Covered</h3>
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <ul class="skills-list">
+                        <li>Linux</li>
+                        <li>AWS Cloud Computing</li>
+                        <li>GitHub</li>
+                        <li>Docker</li>
+                        <li>Kubernetes</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="skills-list">
+                        <li>Bash Scripting</li>
+                        <li>Terraform</li>
+                        <li>Ansible</li>
+                        <li>Jenkins</li>
+                        <li>DevOps Best Practices</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+
+    <div class="modal fade" id="advisorModal" tabindex="-1" role="dialog" aria-labelledby="advisorModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="advisorModalLabel">Talk to our advisor</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                    <form id="contactForm">
+                        <div class="form-group row">
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="name" placeholder="Name*" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control" id="email" placeholder="Email*" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-9">
+                                <input type="tel" class="form-control" id="contact" placeholder="Contact Number*" required>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="submitForm()">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add this HTML markup for the thank you message -->
+    <div class="modal fade" id="thankYouModal" tabindex="-1" role="dialog" aria-labelledby="thankYouModalLabel"
+     aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="thankYouModalLabel">Thank You!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Our learning consultant will get<br>back to you in one business day.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="downloadModal" tabindex="-1" role="dialog" aria-labelledby="downloadModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="downloadModalLabel">Download Syllabus</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="downloadMessage">PDF link will be sent to your email address.</p>
+                    <form id="downloadForm">
+                        <div class="form-group">
+                            <label for="downloadEmail">Email:</label>
+                            <input type="email" class="form-control" id="downloadEmail" placeholder="Enter your email" required>
+                            <div class="invalid-feedback">The field is mandatory to download the syllabus.</div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="downloadSyllabus()">Download</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="#" class="section" style="margin-left: 42px;">
+        <h3>Syllabus</h3>
+    </section>
+    <div class="container course-content-container mt-5">
+        <div class="lesson grey-box" style="margin-left: 10px; margin-top: -20px;">
+            <a href="#" class="lessons-toggle">Module 01 - Linux</a>
+            <ul id="lesson1" class="sub-lessons collapse lesson-list">
+                <li><span>1.01 About</span></li>
+                <li><span>1.02 sdf</span></li>
+                <li><span>1.03 gf</span></li>
+                <li><span>1.04 gf</span></li>
+            </ul>
+        </div>
+        <div class="lesson grey-box" style="margin-left: 10px; margin-top: 10px;">
+            <a href="#" class="lessons-toggle">Module 02 - Bash Scripting</a>
+            <ul id="lesson1" class="sub-lessons collapse lesson-list">
+                <li><span>2.01 Compute</span></li>
+                <li><span>2.02 Network</span></li>
+                <li><span>2.03 Storage</span></li>
+                <li><span>2.04 Database</span></li>
+                <li><span>2.05 Serverless</span></li>
+                <li><span>2.06 Monitoring</span></li>
+                <li><span>2.07 Automation</span></li>
+            </ul>
+        </div>
+        <div class="lesson grey-box" style="margin-left: 10px; margin-top: 10px;">
+            <a href="#" class="lessons-toggle">Module 03 - AWS Cloud Computing</a>
+            <ul id="lesson1" class="sub-lessons collapse lesson-list">
+                <li><span>2.01 Compute</span></li>
+                <li><span>2.02 Network</span></li>
+                <li><span>2.03 Storage</span></li>
+                <li><span>2.04 Database</span></li>
+                <li><span>2.05 Serverless</span></li>
+                <li><span>2.06 Monitoring</span></li>
+                <li><span>2.07 Automation</span></li>
+            </ul>
+        </div>
+        <div class="lesson grey-box" style="margin-left: 10px; margin-top: 10px;">
+            <a href="#" class="lessons-toggle">Module 04 - GitHub</a>
+            <ul id="lesson2" class="sub-lessons collapse lesson-list">
+                <li><span>3.01 Version Control Fundamentals</span></li>
+                <li><span>3.02 Basics</span></li>
+                <li><span>3.03 Setup and Usage</span></li>
+                <li><span>3.04 Integration</span></li>
+                <li><span>3.05 Best Practices</span></li>
+            </ul>
+        </div>
+        <div class="lesson grey-box" style="margin-left: 10px; margin-top: 10px;">
+            <a href="#" class="lessons-toggle">Module 05 - Docker</a>
+            <ul id="lesson4" class="sub-lessons collapse lesson-list">
+                <li><span>4.01 Containerization Concept</span></li>
+                <li><span>4.02 Image</span></li>
+                <li><span>4.03 Container</span></li>
+                <li><span>4.04 Registry</span></li>
+                <li><span>4.05 Best Practices</span></li>
+            </ul>
+        </div>
+        <div class="lesson grey-box" style="margin-left: 10px; margin-top: 10px;">
+            <a href="#" class="lessons-toggle">Module 06 - Kubernetes</a>
+            <ul id="lesson5" class="sub-lessons collapse lesson-list">
+                <li><span>5.01 Architecture</span></li>
+                <li><span>5.02 Familiarity with YAML</span></li>
+                <li><span>5.03 Container</span></li>
+                <li><span>5.04 Pods</span></li>
+                <li><span>5.05 Best Practices</span></li>
+            </ul>
+        </div>
+        <div class="lesson grey-box" style="margin-left: 10px; margin-top: 10px;">
+            <a href="#" class="lessons-toggle">Module 07 - Jenkins</a>
+            <ul id="lesson3" class="sub-lessons collapse lesson-list">
+                <li><span>6.01 About DevOps</span></li>
+                <li><span>6.02 Basics of Jenkins</span></li>
+                <li><span>6.03 Integration</span></li>
+                <li><span>6.04 Plugins</span></li>
+                <li><span>6.05 Best Practices</span></li>
+            </ul>
+        </div>
+        <div class="lesson grey-box" style="margin-left: 10px; margin-top: 10px;">
+            <a href="#" class="lessons-toggle">Module 08 - Terraform</a>
+            <ul id="lesson6" class="sub-lessons collapse lesson-list">
+                <li><span>7.01 ABC</span></li>
+                <li><span>7.02 ABC</span></li>
+                <li><span>7.03 ABC</span></li>
+                <li><span>7.04 ABC</span></li>
+                <li><span>7.05 Best Practices</span></li>
+            </ul>
+        </div>
+        <div class="lesson grey-box" style="margin-left: 10px; margin-top: 10px;">
+            <a href="#" class="lessons-toggle">Module 09 - Ansible</a>
+            <ul id="lesson7" class="sub-lessons collapse lesson-list">
+                <li><span>1.01 XYZ</span></li>
+                <li><span>1.02 XYZ</span></li>
+                <li><span>1.03 XYZ</span></li>
+                <li><span>1.04 XYZ</span></li>
+                <li><span>1.05 Best Practices</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div style="margin-top: 60px; margin-left: 50px;">
+        <h3>Why Online Bootcamp</h3>
+        <div class="container course-section mt-5" style="margin-left: 320px;">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="http://52.209.254.209/images/online-coaching.avif" alt="Online Coaching" class="img-fluid online-coaching-image">
+                </div>
+                <div class="col-md-9">
+                    <div class="col-md-6" style="margin-right: -220px; margin-left: -160px;">
+                        <div class="grey-box with-shadow" style="width: 310px; height: 120px; background-color: #fff;">
+                            <h4>Flexibility</h4>
+                            <p>Learn at your own pace, anytime, anywhere.</p>
+                        </div>
+                        <div class="grey-box mt-3 with-shadow" style="width: 310px; height: 120px; background-color: #fff;">
+                            <h4>Accessibility</h4>
+                            <p>Access to course materials 24/7 from any device.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6" style="margin-top: -280px;">
+                        <div class="grey-box with-shadow" style="width: 310px; height: 120px; background-color: #fff; margin-right: -120px;">
+                            <h4>Interactivity</h4>
+                            <p>Engage with instructors and peers through live sessions and forums.</p>
+                        </div>
+                        <div class="grey-box mt-3 with-shadow" style="width: 310px; height: 120px; background-color: #fff; margin-right: -120px;">
+                            <h4>Affordability</h4>
+                            <p>Cost-effective compared to traditional classroom-based learning.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section id="about" class="section" style="text-align: center; margin-top: 50px;">
+            <h2>About Us</h2>
+            <p>We are CloudCracker Coaching Classes, dedicated to providing top-quality education and mentorship in various domains including cloud computing, data science, programming, and networking.</p>
+        </section>
+        <section id="contact-section" class="section" style="text-align: center; margin-top: 50px;">
+            <h2 style="text-align: center;">Contact Us</h2>
+            <p style="text-align: center;">If you have any questions or inquiries, feel free to contact us using the information provided below:</p>
+            <p style="text-align: center;">Email: info@cloudcracker.com</p>
+            <p style="text-align: center;">Phone: +1 (123) 456-7890</p>
+        </section>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <p>&copy; 2024 AWS Training Center. All rights reserved.</p>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 50) {
+                    $('.navbar').addClass('bg-dark');
+                    $('.navbar-light .navbar-nav .nav-link').css('color', 'white');
+                } else {
+                    $('.navbar').removeClass('bg-dark');
+                    $('.navbar-light .navbar-nav .nav-link').css('color', 'black');
+                }
+            });
+        });
+
+        $(document).ready(function () {
+            $('.lessons-toggle').click(function (e) {
+                e.preventDefault();
+                $(this).siblings('.sub-lessons').slideToggle();
+                $(this).toggleClass('collapsed');
+            });
+        });
+
+        function submitForm() {
+            var name = $('#name').val();
+            var email = $('#email').val();
+            var contact = $('#contact').val();
+            $.ajax({
+                type: "POST",
+                url: "http://52.209.254.209/script/submit_form_updated.php",
+                data: {
+                    name: name,
+                    email: email,
+                    contact: contact
+                },
+                success: function (response) {
+                    // Hide the advisor modal
+                    $('#advisorModal').modal('hide');
+                    // Show the thank you modal
+                    $('#thankYouModal').modal('show');
+                    // Clear the form fields after successful submission
+                    $('#name').val('');
+                    $('#email').val('');
+                    $('#contact').val('');
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error submitting form:", error);
+                }
+            });
+        }
+
+
+        function openDownloadModal() {
+            $('#downloadModal').modal('show');
+        }
+
+        function downloadSyllabus() {
+            var email = $('#downloadEmail').val();
+            if (!email) {
+                $('#downloadEmail').addClass('is-invalid');
+                return;
+            }
+            $.ajax({
+                type: "POST",
+                url: "http://52.209.254.209/script/download_syllabus_link.php",
+                data: {
+                    email: email
+                },
+                success: function (response) {
+                    $('#downloadModal').modal('hide');
+                    alert("PDF link will be sent to your email address: " + email);
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error sending email:", error);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

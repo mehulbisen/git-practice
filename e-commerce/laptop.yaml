@@ -1,0 +1,41 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: laptop-deployment
+  labels:
+    app: ecommerce
+spec:
+  template:
+    metadata: 
+      name: laptop-container
+      labels:
+        app: ecommerce
+    spec:
+      name: laptop-server
+      image: nginx
+      ports:
+        - containerPort: 80
+  replicas: 3
+  selector:
+    matchlabels:
+      app: ecommerce
+  strategy: 
+    type: RollingUpdate
+...
+---
+apiVersion: apps/v1
+kind: Service
+metadata: 
+  name: laptop-service
+  labels:
+    app: ecommerce
+spec:
+  ports:
+    port: 80
+    targetPort: 80
+    protocol: TCP
+  selector:
+    app: ecommerce
+
+...
