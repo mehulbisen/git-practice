@@ -32,10 +32,10 @@ metadata:
   labels:
     app: ecommerce
 spec:
-  ports:
-    port: 80
-    targetPort: 80
-    protocol: TCP
+  - ports:
+      port: 80
+      targetPort: 80
+      protocol: TCP
   selector:
     app: ecommerce
 
