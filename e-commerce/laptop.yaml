@@ -12,13 +12,14 @@ spec:
       labels:
         app: ecommerce
     spec:
-      name: laptop-server
-      image: nginx
-      ports:
-        - containerPort: 80
+      containers: 
+        - name: laptop-server
+          image: nginx
+          ports:
+            - containerPort: 80
   replicas: 3
   selector:
-    matchlabels:
+    matchLabels:
       app: ecommerce
   strategy: 
     type: RollingUpdate

@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -11,10 +12,11 @@ spec:
       labels:
         app: ecommerce
     spec:
-      name: mobile-server
-      image: httpd
-      ports:
-        - containerPort: 80
+      containers:
+        - name: mobile-server
+          image: httpd
+          ports:
+            - containerPort: 80
   replicas: 3
   selector: 
     matchLabels:
