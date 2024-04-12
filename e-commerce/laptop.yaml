@@ -8,9 +8,9 @@ metadata:
 spec:
   template:
     metadata: 
-      - name: laptopcontainer
-        labels:
-          app: ecommerce
+      name: laptopcontainer
+      labels:
+        app: ecommerce
     spec:
       containers: 
         - name: laptop-server
