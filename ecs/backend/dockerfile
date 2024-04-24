@@ -1,6 +1,6 @@
 FROM centos:7
 RUN yum install java-11-openjdk -y
-ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.88/bin/apache-tomcat-9.0.88.tar.gz /opt/
+ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.88/bin/apache-tomcat-9.0.88.tar.gz ./
 RUN tar -xzf apache-tomcat-9.0.87.tar.gz -C /opt/
 ADD https://s3-us-west-2.amazonaws.com/studentapi-cit/student.war /opt/apache-tomcat-9.0.88/webapps/
 ADD https://s3-us-west-2.amazonaws.com/studentapi-cit/mysql-connector.jar /opt/apache-tomcat-9.0.87/lib/mysql-connector.jar
