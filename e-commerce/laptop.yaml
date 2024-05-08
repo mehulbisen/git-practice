@@ -12,6 +12,7 @@ spec:
       app: ecommerce
   template:
     metadata: 
+      name: laptopcontainer
       labels:
         app: ecommerce
     spec:
@@ -40,3 +41,4 @@ spec:
     app: ecommerce
 
 ...
+
