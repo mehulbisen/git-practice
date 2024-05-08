@@ -6,9 +6,12 @@ metadata:
   labels:
     app: ecommerce
 spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ecommerce
   template:
     metadata: 
-      name: laptopcontainer
       labels:
         app: ecommerce
     spec:
@@ -17,10 +20,6 @@ spec:
           image: nginx
           ports:
             - containerPort: 80
-  replicas: 3
-  selector:
-    matchLabels:
-      app: ecommerce
   strategy: 
     type: RollingUpdate
 ...

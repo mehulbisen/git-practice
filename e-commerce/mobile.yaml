@@ -6,21 +6,20 @@ metadata:
   labels:
     app: ecommerce
 spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ecommerce
   template:
-    metadata: 
-      name: mobile-container
+    metadata:
       labels:
         app: ecommerce
     spec:
       containers:
-        - name: mobile-server
-          image: httpd
-          ports:
-            - containerPort: 80
-  replicas: 3
-  selector: 
-    matchLabels:
-      app: ecommerce
+      - name: mobile-server
+        image: httpd
+        ports:
+        - containerPort: 80
   strategy:
     type: RollingUpdate
 ...
