@@ -20,7 +20,7 @@ spec:
   selector:
     matchLabels: 
       app: demo-app
-  startegy: RollingUpdate
+  strategy: RollingUpdate
 ...
 
 ---
