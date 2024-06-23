@@ -21,7 +21,7 @@ spec:
           - containerPort: 80
   replicas: 4
   selector:
-    matchlabels:
+    matchLabels:
       app: my-app
   strategy:
     type: RollingUpdate
