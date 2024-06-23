@@ -1,0 +1,15 @@
+apiVersion: v1 
+kind: PersistentVolume 
+metadata: 
+  name: my-pv
+  labels:
+    app: my-app
+    env: dev
+spec: 
+  capacity:
+    storage: 1Gi
+  accessModes: 
+    - ReadWriteonce
+  hostPath:
+    path: "/mnt/data"
+  
