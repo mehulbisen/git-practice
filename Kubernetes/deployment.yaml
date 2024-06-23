@@ -2,45 +2,45 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata: 
-  name: my-deployment
+  name: demo-deployment
   labels:
     app: demo-app
-    env: dev
 spec:
   template:
-    metadata:
+    metadata: 
       labels:
-        app: my-app
-        env: dev
+        app: demo-app
     spec:
       containers:
-        - name: my-container
-          image: nginx
+        - name: backend-server
+          image: mehulbisen/mehul:p1
           ports:
             - containerPort: 8080
   replicas: 3
-  strategy:
-    type: RollingUpdate
   selector:
-    matchLabels:
-      app: my-app
+    matchLabels: 
+      app: demo-app
+  strategy: 
+    type: RollingUpdate
 ...
 
+---
 apiVersion: v1
 kind: Service
 metadata:
-  name: myservice
+  name: demo-service
   labels:
-    app: my-app
-    env: dev
+    app: demo-app
 spec:
   ports:
-    - port: 8080
+    - port: 80
       targetPort: 8080
       protocol: TCP
-  
   type: NodePort
   selector:
-    app: my-app
+    app: demo-app
 ...
+
+
+  
 
