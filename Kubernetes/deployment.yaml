@@ -26,5 +26,21 @@ spec:
       app: my-app
 ...
 
-
+apiVersion: v1
+kind: Service
+metadata:
+  name: myservice
+  labels:
+    app: my-app
+    env: dev
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+  
+  type: NodePort
+  selector:
+    app: my-app
+...
 
