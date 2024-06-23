@@ -8,12 +8,12 @@ resource "aws_vpc" "project_vpc" {
 
 resource "aws_subnet" "public_subnet" {
     vpc_id = "aws_vpc.project_vpc"
-    cidr_block = "10.0.10.0/20"
+    cidr_block = "10.0.10.0/24"
 }
 
 resource "aws_subnet" "private_subnet" {
     vpc_id = "aws_vpc.project_vpc"
-    cidr_block = "10.0.33.0/20"
+    cidr_block = "10.0.33.0/24"
 }
 
 resource "aws_internet_gateway" "my_igw" {
