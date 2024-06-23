@@ -20,7 +20,7 @@ spec:
         volumeMounts:
         - mountPath: "/usr/share/nginx/html"
           name: html-volume
-  volumes:
-  - name: html-volume
-    persistentVolumeClaim:
-      claimName: pvc-claim
+      volumes:
+      - name: html-volume
+        persistentVolumeClaim:
+          claimName: pvc-claim
