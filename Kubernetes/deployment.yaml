@@ -9,8 +9,9 @@ metadata:
 spec:
   template:
     metadata:
-      app: my-app
-      env: dev
+      labels:
+        app: my-app
+        env: dev
     spec:
       containers:
         - name: my-container
