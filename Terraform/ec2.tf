@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "Demo_instance" {
-    ami = ""
+    ami = "ami-0dfdc165e7af15242"
     instance_type = "t2.micro"
     user_data = <<-EOF
                 #!/bin/bash
