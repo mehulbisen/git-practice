@@ -1,0 +1,39 @@
+apiVersion: apps/v1 
+kind: Deployment 
+metadata: 
+  name: config-deployment
+  labels:   
+    app: my-app
+    env: dev
+spec:
+  replicas: 5
+  selector: 
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      app: my-app
+    spec:
+      containers:
+        - name: my-container
+          image: httpd
+          ports:  
+            - containerPort: 80
+          volumeMounts:
+            - mountPath: /var/www/
+      volumes: 
+        - name: html-volume
+          confgiMap: 
+            name: demo-configmap        
+      
+      env: 
+        - name: username
+          Valuefrom:
+            configMapKeyRef:
+              name: demo-config
+              key: username
+        - name: password
+          Valuefrom:
+            configMapKeyRef: 
+              name: demo-config 
+              key: pass 
