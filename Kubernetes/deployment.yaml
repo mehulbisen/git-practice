@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: backend-server
-          image: mehulbisen/mehul:p1
+          image: nginx
           ports:
             - containerPort: 8080
   replicas: 3
