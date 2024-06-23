@@ -18,14 +18,14 @@ spec:
         - name: demo-container
           image: httpd
           ports:
-            - containerPort: 80
+          - containerPort: 80
           volumeMounts:
-            - mountPath: "usr/share/nginx/html"
-              name: html-volume
+          - mountPath: "usr/share/nginx/html"
+            name: html-volume
   volumes: 
-    - name: html-volume 
-      persistentVolumeClaim:
-        claimName: pvc-claim
+  - name: html-volume 
+    persistentVolumeClaim:
+      claimName: pvc-claim
   replicas: 4
   selector:
     matchLabels:
