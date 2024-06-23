@@ -1,46 +1,46 @@
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: Deployment 
 metadata: 
-  name: demo-deployment
+  name: my-deployment
   labels:
-    app: demo-app
+    app: my-app
+    env: dev
+
 spec:
   template:
-    metadata: 
+    metadata:
       labels:
-        app: demo-app
-    spec:
-      containers:
-        - name: backend-server
-          image: nginx
-          ports:
-            - containerPort: 80
-  replicas: 3
+        app: my-app
+        env: dev
+  spec: 
+    container: 
+      - name: demo-container
+        image: httpd
+        ports:
+          - containerPort: 80
+  replicas: 4
   selector:
-    matchLabels: 
-      app: demo-app
-  strategy: 
+    matchlabels:
+      app: my-app
+  strategy:
     type: RollingUpdate
 ...
 
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: demo-service
+apiVersion: v1 
+kind: Service 
+metadata: 
+  name: my-svc
   labels:
-    app: demo-app
+    app: my-app
+    env: dev
 spec:
   ports:
     - port: 80
       targetPort: 80
       protocol: TCP
-  type: NodePort
   selector:
-    app: demo-app
+    app: my-app
+
 ...
-
-
-  
-
