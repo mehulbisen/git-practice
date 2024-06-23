@@ -9,7 +9,7 @@ spec:
   capacity:
     storage: 1Gi
   accessModes: 
-    - ReadWriteonce
+    - ReadWriteOnce
   hostPath:
     path: "/mnt/data"
   
