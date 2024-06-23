@@ -13,12 +13,12 @@ spec:
       labels:
         app: my-app
         env: dev
-  spec: 
-    container: 
-      - name: demo-container
-        image: httpd
-        ports:
-          - containerPort: 80
+    spec: 
+      containers: 
+        - name: demo-container
+          image: httpd
+          ports:
+            - containerPort: 80
   replicas: 4
   selector:
     matchLabels:
