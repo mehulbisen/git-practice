@@ -14,12 +14,12 @@ spec:
     metadata: 
       labels:
         sam: dep 
-    
-    containers: 
-      - name: sam-test
-        image: httpd
-        ports:  
-          containerPort: 80
+    spec: 
+      containers: 
+        - name: sam-test
+          image: httpd
+          ports:  
+            containerPort: 80
 ...
 
 ---
