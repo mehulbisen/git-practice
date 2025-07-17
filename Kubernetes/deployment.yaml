@@ -38,3 +38,4 @@ spec:
   type: NodePort 
   selector:
     pqr: dep 
+... 
