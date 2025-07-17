@@ -4,9 +4,14 @@ kind: Deployment
 metadata: 
   name: test-deployment
   labels:
-  app: test
+    app: test
 
 spec: 
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app: test
   template:
     metadata:
       labels:
@@ -18,11 +23,6 @@ spec:
           image: httpd
           ports:
             - containerPort: 80
-  Replicas: 3
-
-  selector:
-    matchLabels:
-      app: test
 ...
 
 ---
@@ -41,7 +41,6 @@ spec:
       protocol: TCP
   type: NodePort
   selector:
-    matchLabels:
-      app: test-service
+    app: test-service
 
 ...
