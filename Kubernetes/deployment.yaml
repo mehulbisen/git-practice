@@ -14,7 +14,7 @@ spec:
 
   template:
     metadata:
-      matchLabels:
+      labels:
         abc: dep 
     spec: 
       containers: 
