@@ -1,43 +1,38 @@
+---
 apiVersion: apps/v1 
 kind: Deployment 
 metadata: 
-  name: sam-deployment
+  name: abc-deployment
   labels: 
-    sam: dep 
+    abc: dep 
+
 spec: 
   replicas: 3
   selector: 
     matchLabels: 
-      sam: dep 
+      abc: dep 
   
-  template: 
-    metadata: 
-      labels:
-        sam: dep 
-    spec: 
-      containers: 
-        - name: sam-test
-          image: httpd
-          ports:  
-            - containerPort: 80
+  template:
+    containers: 
+      - name: abc 
+        image: httpd 
+        ports:
+          - containerPort: 80
 ...
 
 ---
-
 apiVersion: v1 
 kind: Service 
 metadata:
-  name: sam-svc 
+  name: abc-svc
   labels:
-    sam: dep  
-
+    abc: dep 
 spec: 
-  ports: 
+  ports:
     - port: 80
       targetPort: 80
       protocol: TCP 
   type: NodePort 
-
   selector:
-    sam: dep 
+    abc: dep 
 ...
