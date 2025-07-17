@@ -10,11 +10,11 @@ spec:
   selector: 
     matchLabels: 
       xyz: dep 
-  spec:
+  template:
     metadata: 
       labels: 
         xyz: dep 
-    template:
+    spec:
       containers:
         - name: xyz-pod 
           image: httpd
