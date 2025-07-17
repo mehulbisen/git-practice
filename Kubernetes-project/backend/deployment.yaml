@@ -6,6 +6,10 @@ metadata:
   labels:
     app: three-tier
 spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: three-tier
   template:
     metadata:
       labels:
@@ -16,10 +20,7 @@ spec:
           image: mehulbisen/mehul-repo:backendff
           ports:
             - containerPort: 8080
-  replicas: 3
-  selector:
-    matchLabels:
-      app: three-tier
+            
   strategy: 
     type: RollingUpdate
 
