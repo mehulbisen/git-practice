@@ -11,8 +11,12 @@ spec:
   selector: 
     matchLabels: 
       abc: dep 
-  spec:
-    template:
+
+  template:
+    metadata:
+      matchLabels:
+        abc: dep 
+    spec: 
       containers: 
         - name: abc 
           image: httpd 
