@@ -11,7 +11,7 @@ resource "aws_vpc" "my_vpc" {
 }
 
 resource "aws_subnet" "public_subnet" {
-    vpc_id = aws_vpc.my_vpc
+    vpc_id = aws_vpc.my_vpc.id
     cidr_block = var.subnet_cidr
 
     tags = {
@@ -20,7 +20,7 @@ resource "aws_subnet" "public_subnet" {
 }
 
 resource "aws_internet_gateway" "my_igw" {
-    vpc_id = aws_vpc.my_vpc
+    vpc_id = aws_vpc.my_vpc.id
 
     tags = {
         Name = "project_vpc"
@@ -28,11 +28,11 @@ resource "aws_internet_gateway" "my_igw" {
 }
 
 resource "aws_route_table" "public_route_table" {
-    vpc_id = aws_vpc.my_vpc
+    vpc_id = aws_vpc.my_vpc.id
 
     route {
         cidr_block = "0.0.0.0/0"
-        gateway_id = aws_internet_gateway.my_igw
+        gateway_id = aws_internet_gateway.my_igw.id
     }
     tags = {
         Name = "project_vpc"
@@ -40,12 +40,12 @@ resource "aws_route_table" "public_route_table" {
 }
 
 resource "aws_route_table_association" "my_association" {
-    subnet_id = aws_subnet.public_subnet
-    route_table_id = aws_route_table.public_route_table
+    subnet_id = aws_subnet.public_subnet.id
+    route_table_id = aws_route_table.public_route_table.id
 }
 
 resource "aws_security_group" "all_tcp" {
-    vpc_id = aws_vpc.my_vpc
+    vpc_id = aws_vpc.my_vpc.id
 
     ingress {
         from_port = "22"
@@ -72,7 +72,7 @@ resource "aws_security_group" "all_tcp" {
 resource "aws_instance" "demo-server" {
     ami = var.ami_id
     instance_type = var.instance_type
-    subnet_id = aws_subnet.public_subnet
+    subnet_id = aws_subnet.public_subnet.id
     key_name = var.key_name
     vpc_security_group_ids = [aws_security_group.all_tcp]
 }
