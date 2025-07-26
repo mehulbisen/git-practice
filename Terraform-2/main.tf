@@ -74,5 +74,5 @@ resource "aws_instance" "demo-server" {
     instance_type = var.instance_type
     subnet_id = aws_subnet.public_subnet.id
     key_name = var.key_name
-    vpc_security_group_ids = [aws_security_group.all_tcp]
+    vpc_security_group_ids = [aws_security_group.all_tcp.id]
 }
