@@ -16,6 +16,12 @@ variable "subnet_cidr" {
     default = "10.0.1.0/24"
 }
 
+variable "avaibility_zone" {
+    description = "avaibilitiy_zone_for_subnet"
+    type = string
+    default = "ap-south-1a"
+}
+
 variable "ami_id" {
     description = "ami_id_for_ec2"
     type = string
