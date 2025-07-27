@@ -3,19 +3,19 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-deployment
-  lables:
+  labels:
     app: dev
 spec:
   replicas: 3
   selectors:
-    labels: 
+    matchLabels: 
       app: dev
   template: 
     metadata:
       name: my-pod
       labels:
         app: dev
-    specs:
+    spec:
       containers:
         - name: my-pod
           image: httpd
@@ -38,7 +38,7 @@ spec:
       protocol: TCP
   type: NodePort
   selector:
-    labels:
+    matchLabels:
       app: dev
 
 ...
