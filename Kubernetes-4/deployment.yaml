@@ -1,0 +1,41 @@
+---
+apiVersion: apps/v1
+kind: Deployment 
+metadata: 
+  name: demo-deployment
+  labels: 
+    env: dev 
+
+spec: 
+  replicas: 3
+  selector:
+    matchLabels:
+      env: dev
+  template:
+    metadata:
+      labels:
+        env: dev
+    spec: 
+      containers:
+        - name: demo-pod
+          image: httpd
+          ports:
+            - containerPort: 80
+...
+
+---
+apiVersion: v1 
+kind: Service 
+metadata: 
+  name: demo-svc
+  labels: 
+    env: dev 
+spec: 
+  ports: 
+    - port: 80
+      targetport: 80
+      protocol: TCP 
+  selector:
+    env: dev 
+  type: NodePort 
+... 
