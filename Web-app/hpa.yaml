@@ -1,5 +1,5 @@
-apiVersion: autoscalling/v2
-kind: HorizontalPodAutoscaller
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
 metadata:
   name: web-app-hpa
   labels: 
