@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata: 
+  name: three-tier-app-dep-backend
+  labels:
+    app: three-tier-app-backend
+  
+spec:
+  replicas: 3
+  selector: 
+    matchlabels:
+      labels:
+        app: three-tier-app-backend
+  template:
+    metadata:
+      labels:
+        app: three-tier-app-backend
+    spec:
+      containers:
+        - name: three-tier-app-backend
+          image: 
