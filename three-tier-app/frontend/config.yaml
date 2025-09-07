@@ -12,7 +12,7 @@ data:
         <h1>School App</h1>
         <div id="users">Loading...</div>
         <script>
-          fetch('/api/users')
+          fetch("http://af9dda5e35db6474ca7a2bc67c5e8d0e-1183755155.ap-south-1.elb.amazonaws.com:3000/api/users")
             .then(r=>r.json())
             .then(data=>{
               document.getElementById('users').innerHTML = data.map(u=>`<div>${u.id}: ${u.name} (${u.email})</div>`).join('');
