@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-config
+  namespace: school-app
+data:
+  index.html: |
+    <!doctype html>
+    <html>
+      <head><title>School App</title></head>
+      <body>
+        <h1>School App</h1>
+        <div id="users">Loading...</div>
+        <script>
+          fetch('/api/users')
+            .then(r=>r.json())
+            .then(data=>{
+              document.getElementById('users').innerHTML = data.map(u=>`<div>${u.id}: ${u.name} (${u.email})</div>`).join('');
+            }).catch(e=>document.getElementById('users').innerText='Error')
+        </script>
+      </body>
+    </html>
+
+  nginx.conf: |
+    server {
+      listen 80;
+      location / {
+        root /usr/share/nginx/html;
+        index index.html;
+      }
+      location /api/ {
+        proxy_pass http://backend:3000/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+      }
+    }
